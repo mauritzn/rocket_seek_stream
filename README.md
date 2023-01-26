@@ -1,18 +1,26 @@
 # rocket_seek_stream
 
-[crates.io](https://crates.io/crates/rocket_seek_stream)
+[crates.io _(rydz version)_](https://crates.io/crates/rocket_seek_stream)
 
 A [Rocket](https://github.com/SergioBenitez/Rocket) responder for types implementing the `AsyncRead + AsyncSeek` traits, such as files and `rocket::futures::io::Cursor`, that will respond to range requests with a 206 Partial Content response. The `Content-Type` can optionally be inferred by taking a sample of bytes from the beginning of the stream, or given manually. An `Accept-Ranges: bytes` header will be sent in all responses to notify browsers that range requests are supported for the resource.
 
 This supports both single and multipart/byterange requests.
 [https://tools.ietf.org/html/rfc7233](https://tools.ietf.org/html/rfc7233)
 
+## Source repo
+
+This repo is a fork from [rydz' rocket_seek_stream](https://github.com/rydz/rocket_seek_stream) repo.
+
+## Fork changes
+
+- Adds `Access-Control-Allow-Origin` response header with the value of `*` to SeekStream Responder [_(commit)_](https://github.com/mauritzn/rocket_seek_stream/commit/f57a77b77b080d16500888a3a076529e08eb045f).
+
 ## Cargo.toml
 
 Add this to your dependencies.
 
 ```
-rocket_seek_stream = {git="https://github.com/rydz/rocket_seek_stream"}
+rocket_seek_stream = {git="https://github.com/mauritzn/rocket_seek_stream"}
 ```
 
 ## Examples
