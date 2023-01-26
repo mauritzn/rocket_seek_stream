@@ -156,6 +156,7 @@ impl<'r> Responder<'r, 'static> for SeekStream<'r> {
 
         // Set the response headers
         let mut resp = Response::new();
+        resp.set_raw_header("Access-Control-Allow-Origin", "*");
         resp.set_raw_header("Accept-Ranges", "bytes");
         resp.set_raw_header("Content-Type", mime_type.clone());
 
